@@ -18,8 +18,10 @@ class _ProductManagerState extends State<ProductManager> {
 
   @override
   void initState() {
-    super.initState();
+    if (widget.startingProduct != null) {
     _products.add(widget.startingProduct);
+    }
+    super.initState();
   }
 
   void _addProducts(String product) {
@@ -34,7 +36,7 @@ class _ProductManagerState extends State<ProductManager> {
         margin: EdgeInsets.all(10.0),
         child: ProductControl(_addProducts),
       ), 
-      Products(_products)
+      Expanded(child: Products(_products))
     ]);
   }
 }
